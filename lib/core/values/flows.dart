@@ -1,0 +1,4 @@
+enum Flows {
+  signIn,
+  signUp,
+}
