@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:shelve/app/category/domain/usecases/fetch_categories_usecase.dart';
 import 'package:shelve/app/category/domain/usecases/save_categories_usecase.dart';
 
@@ -19,10 +20,11 @@ class CategoryController {
         _saveCategories = saveCategoriesUsecase;
 
   final categories = ReactiveState<CategoryError, List<CategoryEntity>>();
+  final allCategories = <CategoryEntity>[];
   final currentIndex = ValueNotifier(0);
   bool userSwiped = true;
   final pageController = PageController();
-  final scrollController = ScrollController();
+  final scrollController = ItemScrollController();
 
   Future<void> fetchCategories() async {
     categories.changeToLoadingState();
@@ -30,7 +32,10 @@ class CategoryController {
 
     result.when(
       failure: (error) => categories.changeToErrorState(error),
-      success: (data) => categories.changeToSuccessState(data),
+      success: (data) {
+        allCategories.addAll(data.where((element) => element.name != 'All'));
+        categories.changeToSuccessState(data);
+      },
     );
   }
 
@@ -41,14 +46,9 @@ class CategoryController {
   void changeIndex(int index) {
     currentIndex.value = index;
     userSwiped = false;
-    pageController
-        .animateToPage(
-          index,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        )
-        .then(
-          (value) => userSwiped = true,
-        );
+    pageController.jumpToPage(
+      index,
+    );
+    userSwiped = true;
   }
 }

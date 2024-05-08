@@ -56,7 +56,9 @@
   "noActiveCategories": "No active categories",
   "noActiveCategoriesMessage": "You don't have any active categories. Tap to select some.",
   "setBudget": "Set budget",
-  "selectCategories": "Budget categories",
-  "selectCategoriesMessage": "Select which categories you want to see in the home screen.",
-  "slogan1": "Welcome back!"
+  "selectCategories": "Categories",
+  "selectCategoriesMessage": "Reorganize your categories by tapping and dragging.",
+  "slogan1": "Welcome back!",
+  "categoryTitle": "What will you save today?",
+  "categoryHint": "Choose below what you want to save."
 }

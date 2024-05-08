@@ -31,6 +31,8 @@ class _SelectorWidgetState extends State<SelectorWidget> {
   }
 
   void _changeState() {
+    if (active) return;
+
     if (widget.onSelect != null && !active) {
       widget.onSelect!(widget.text);
     }

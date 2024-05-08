@@ -645,5 +645,7 @@ class Iconcino {
         'ticket': Iconcino.ticket,
         'bowl': Iconcino.bowl,
         'scan': Iconcino.scan,
+        'link_1': Iconcino.link_1,
+        'user': Iconcino.user,
       };
 }

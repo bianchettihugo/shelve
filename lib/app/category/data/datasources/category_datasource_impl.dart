@@ -16,21 +16,21 @@ class CategoryDatasourceImpl extends CategoryDatasource {
       active: true,
       order: 0,
     ),
+    'Links': CategoryModel(
+      name: 'Links',
+      icon: 'link_1',
+      active: false,
+      order: 1,
+    ),
     'Notes': CategoryModel(
       name: 'Notes',
       icon: 'note_02',
       active: false,
-      order: 1,
-    ),
-    'Cards': CategoryModel(
-      name: 'Cards',
-      icon: 'credit_card',
-      active: false,
       order: 2,
     ),
-    'Passwords': CategoryModel(
-      name: 'Passwords',
-      icon: 'lock',
+    'Contact': CategoryModel(
+      name: 'Contact',
+      icon: 'user',
       active: false,
       order: 3,
     ),

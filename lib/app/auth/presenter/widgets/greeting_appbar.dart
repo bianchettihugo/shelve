@@ -5,11 +5,15 @@ import 'package:shelve/core/theme/iconcino_icons.dart';
 import 'package:shelve/core/utils/extensions.dart';
 import 'package:shelve/core/values/routes.dart';
 
+import '../../../category/domain/entities/category_entity.dart';
+
 class GreetingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AuthController authController;
+  final Function(List<CategoryEntity>?) onCategoriesChanged;
 
   const GreetingAppBar({
     required this.authController,
+    required this.onCategoriesChanged,
     super.key,
   });
 
@@ -45,8 +49,11 @@ class GreetingAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: const Icon(Iconcino.sliders),
             color: context.scheme.onBackground,
             iconSize: 28,
-            onPressed: () {
-              context.pushNamed(Routes.categories);
+            onPressed: () async {
+              final result = await context.pushNamed(Routes.categories);
+              if (result != null && result is List<CategoryEntity>) {
+                onCategoriesChanged(result);
+              }
             },
           ),
           const SizedBox(width: 5),

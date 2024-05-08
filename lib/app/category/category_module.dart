@@ -3,7 +3,7 @@ import 'package:shelve/app/category/data/datasources/category_datasource_impl.da
 import 'package:shelve/app/category/domain/usecases/fetch_categories_usecase.dart';
 import 'package:shelve/app/category/domain/usecases/save_categories_usecase.dart';
 import 'package:shelve/app/category/presenter/controller/category_controller.dart';
-import 'package:shelve/app/category/presenter/flows/category_section.dart';
+import 'package:shelve/app/category/presenter/widgets/category_section.dart';
 import 'package:shelve/core/services/dependency/dependency_service.dart';
 import 'package:shelve/core/services/storage/local_storage.service.dart';
 import 'package:shelve/core/values/keys.dart';
@@ -41,7 +41,7 @@ class CategoryModule {
     Dependency.registerFactory(
       () => FeatureFlow(
         builder: (context, params) => CategorySection(
-          controller: Dependency.get<CategoryController>()..fetchCategories(),
+          controller: Dependency.get<CategoryController>(),
         ),
       ),
       Keys.categoryList,
